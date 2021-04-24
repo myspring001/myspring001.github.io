@@ -1,0 +1,54 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><meta name="theme-color" content="#2d4356"><meta name="baidu-site-verification"><title>maven | 技术分享</title><link rel="stylesheet" type="text/css" href="../css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="../favicon.png"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script><meta name="generator" content="Hexo 5.4.0"></head><script type="text/javascript" src="../js/ready.js" async></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">LITREILY</a></div><div class="navbar-search"><!--= show a circle here--></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">技术分享</a></h1></div><p class="m-desc">心之所向，无惧无悔,<br>愿求仁得仁，复无怨怼！</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="../archives/">归档</a></li><li><span class="dot">●</span><a href="../categories/">分类</a></li><li><span class="dot">●</span><a href="../tags/">标签</a></li><li><span class="dot">●</span><a href="../about/">关于</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus="if(this.value=='搜索'){this.value='';}" onblur="if(this.value==''){this.value='搜索';}"><input type="text" style="display:none;"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">maven</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="">2021-04-21</a></span><span class="p-category"><i class="fa fa-folder"></i><a href="../categories/%E5%90%8E%E7%AB%AF/">后端</a>&nbsp;&bull;&nbsp;<a href="../categories/%E5%90%8E%E7%AB%AF/maven/">maven</a></span></div></div><div class="p-content"><p><strong>maven解决什么问题？</strong></p>
+<pre><code class="highlight markdown">Maven 可以统一管理所有的依赖 jar，甚至是不同的版本。
+随着依赖的增多，版本不一致、版本冲突、依赖臃肿等问题都会接踵而来。手工解决这些问题是十分枯燥的，幸运的是 Maven 提供了一个优秀的解决方案，它通过一个坐标系统准确地定位每一个构件（artifact），也就是通过一组坐标 Maven 能够找到任何一个 Java 类库（如 jar 文件）。</code></pre>
+
+<p><strong>maven的生命周期</strong></p>
+<pre><code class="highlight markdown">名称	说明
+validate	验证项目结构是否正常，必要的配置文件是否存在
+initialize	做构建前的初始化操作，比如初始化参数、创建必要的目录等
+generate-sources	产生在编译过程中需要的源代码
+process-sources	处理源代码，比如过滤值
+generate-resources	产生主代码中的资源在 classpath 中的包
+process-resources	将资源文件复制到 classpath 的对应包中
+compile	编译项目中的源代码
+process-classes	产生编译过程中生成的文件
+generate-test-sources	产生编译过程中测试相关的代码
+process-test-sources	处理测试代码
+generate-test-resources	产生测试中资源在 classpath 中的包
+process-test-resources	将测试资源复制到 classpath 中
+test-compile	编译测试代码
+process-test-classes	产生编译测试代码过程的文件
+test	运行测试案例
+prepare-package	处理打包前需要初始化的准备工作
+package	将编译后的 class 和资源打包成压缩文件，比如 rar
+pre-integration-test	做好集成测试前的准备工作，比如集成环境的参数设置
+integration-test	集成测试
+post-integration-test	完成集成测试后的收尾工作，比如清理集成环境的值
+verify	检测测试后的包是否完好
+install	将打包的组件以构件的形式，安装到本地依赖仓库中，以便共享给本地的其他项目
+deploy	运行集成和发布环境，将测试后的最终包以构件的方式发布到远程仓库中，方便所有程序员共享</code></pre>
+
+<p><strong>maven依赖范围</strong></p>
+<pre><code class="highlight markdown">1）compile
+编译依赖范围。如果在配置的时候没有指定，就默认使用这个范围。使用该范围的依赖，对编译、测试、运行三种 classpath 都有效。
+2）test
+测试依赖范围。使用该范围的依赖只对测试 classpath 有效，在编译主代码或运行项目的时候，这种依赖是无效的。
+3）provided
+已提供依赖范围。使用此范围的依赖，只在编译和测试 classpath 的时候有效，运行项目的时候是无效的。比如 Web 应用中的 servlet-api，编译和测试的时候就需要该依赖，运行的时候，因为容器中自带了 servlet-api，就没必要使用了。如果使用了，反而有可能出现版本不一致的冲突。
+4）runtime
+运行时依赖范围。使用该范围的依赖，只对测试和运行的 classpath 有效，但在编译主代码时是无效的。比如 JDBC 驱动实现类，就需要在运行测试和运行主代码时候使用，编译的时候，只需 JDBC 接口就行。
+5）system
+系统依赖范围。该范围与 classpath 的关系，同 provided 一样。但是，使用 system 访问时，必须通过 systemPath 元素指定依赖文件的路径。因为该依赖不是通过 Maven 仓库解析的，建议谨慎使用。
+6）import
+导入依赖范围。该依赖范围不会对三种 classpath 产生实际的影响。它的作用是将其他模块定义好的 dependencyManagement 导入当前 Maven 项目 pom 的 dependencyManagement 中。比如有个 SpringPOM Maven 工程，它的 pom 中的 dependencyManagement 配置如下：</code></pre>
+
+<pre><code class="highlight xml"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>xxx<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>xxx<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">version</span>&gt;</span>xx<span class="tag">&lt;/<span class="name">version</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>system<span class="tag">&lt;/<span class="name">scope</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">systemPath</span>&gt;</span>e:/xxxx/xxx/xx.jar<span class="tag">&lt;/<span class="name">systemPath</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></code></pre>
+
+<p>注：以上来源与网络</p>
+</div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">Mr Xue</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="">http://xbget.cn/maven/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，转载请注明出处 <a href="http://xbget.cn">Mr Xue的博客</a>！</span></div></blockquote></div></article><div class="p-info box"></div><aside id="toc"><div class="toc-title">目录</div><nav></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="prev" href="../jekins/">&lt; jekins</a><a class="next" href="../MySQL/">MySQL &gt;</a></div></section><footer><p>Copyright © 2016 - 2021 <a href="../." rel="nofollow">技术分享</a> | <strong><CC></CC></strong><br>Powered by Mr xue.</p></footer></div></div></div><script type="text/javascript" src="../js/search.js"></script><script type="text/javascript" src="../js/top.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script type="text/javascript" src="../js/fancybox.js?v=0.0.1" async></script></body></html>

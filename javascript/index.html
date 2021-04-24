@@ -1,0 +1,112 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><meta name="theme-color" content="#2d4356"><meta name="baidu-site-verification"><title>javascript | 技术分享</title><link rel="stylesheet" type="text/css" href="../css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="../favicon.png"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script><meta name="generator" content="Hexo 5.4.0"></head><script type="text/javascript" src="../js/ready.js" async></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">LITREILY</a></div><div class="navbar-search"><!--= show a circle here--></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">技术分享</a></h1></div><p class="m-desc">心之所向，无惧无悔,<br>愿求仁得仁，复无怨怼！</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="../archives/">归档</a></li><li><span class="dot">●</span><a href="../categories/">分类</a></li><li><span class="dot">●</span><a href="../tags/">标签</a></li><li><span class="dot">●</span><a href="../about/">关于</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus="if(this.value=='搜索'){this.value='';}" onblur="if(this.value==''){this.value='搜索';}"><input type="text" style="display:none;"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">javascript</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="">2021-04-21</a></span><span class="p-category"><i class="fa fa-folder"></i><a href="../categories/%E5%89%8D%E7%AB%AF/">前端</a>&nbsp;&bull;&nbsp;<a href="../categories/%E5%89%8D%E7%AB%AF/JavaScript/">JavaScript</a></span></div></div><div class="p-content"><pre><code class="highlight markdown">javascript是前端开发语言，由浏览器解释执行
+
+JavaScript <span class="emphasis">*函数*</span>是一种 JavaScript 代码块，它可以在调用时被执行
+JavaScript 函数作用域:
+在 JavaScript 中有两种作用域类型：
+1.局部作用域
+2.全局作用域
+
+每个函数创建一个新的作用域。作用域决定了这些变量的可访问性（可见性）。函数内部定义的变量从函数外部是不可访问的（不可见的）。在 JavaScript 函数中声明的变量，会成为函数的局部变量。
+局部变量的作用域是局部的：只能在函数内部访问它们。
+
+函数之外声明的变量，会成为全局变量。
+全局变量的作用域是全局的：网页的所有脚本和函数都能够访问它。
+
+javascript严格模式：
+&quot;use strict&quot;; 的作用是指示 JavaScript 代码应该以“严格模式”执行。
+通过在脚本或函数的开头添加 &quot;use strict&quot;; 来声明严格模式。
+
+变量声明的方式：let const var 
+var 重新声明方式，在使用的过程中需要注意：
+
+var num = 2;
+&#123;
+  var num = 3;
+&#125;
+执行后num的值变成3，变量被重新定义覆盖了
+通过 const 定义的变量与 let 变量类似，但不能重新赋值：
+
+window对象：
+所有浏览器都支持 window 对象。它代表浏览器的窗口。所有全局 JavaScript 对象，函数和变量自动成为 window 对象的成员。全局变量是 window 对象的属性。全局函数是 window 对象的方法。
+window.innerWidth - 浏览器窗口的内宽度
+window.innerHeight - 浏览器窗口的内高度
+
+screen.height 属性返回以像素计的访问者屏幕的高度。
+screen.availWidth 属性返回访问者屏幕的宽度，以像素计，减去诸如窗口工具条之类的界面特征。
+
+可用高度和宽度：
+screen.availHeight 属性返回访问者屏幕的高度，以像素计
+screen.availWidth  属性返回访问者屏幕的宽度
+
+Window Location：
+window.location.href 返回当前页面的URL
+window.location.hostname 返回 web 主机的域名
+window.location.pathname 返回当前页面的路径或文件名
+window.location.protocol 返回使用的 web 协议（http: 或 https:）
+
+Window History：
+history.back() - 等同于在浏览器点击后退按钮，页面转到上次访问的页面
+history.forward() - 等同于在浏览器中点击前进按钮
+</code></pre>
+
+<pre><code class="highlight javascript"><span class="keyword">var</span> person = &#123;
+    firstName:<span class="string">&quot;Bill&quot;</span>,
+    lastName: <span class="string">&quot;Gates&quot;</span>,
+    fullName: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;
+        <span class="keyword">return</span> <span class="built_in">this</span>.firstName + <span class="string">&quot; &quot;</span> + <span class="built_in">this</span>.lastName;
+    &#125;
+&#125;
+person.fullName();</code></pre>
+
+<p>使用call方法可以执行另一个对象的方法：</p>
+<pre><code class="highlight javascript"><span class="keyword">var</span> person = &#123;
+    fullName: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;
+        <span class="keyword">return</span> <span class="built_in">this</span>.firstName + <span class="string">&quot; &quot;</span> + <span class="built_in">this</span>.lastName;
+    &#125;
+&#125;
+<span class="keyword">var</span> person1 = &#123;
+    firstName:<span class="string">&quot;Bill&quot;</span>,
+    lastName: <span class="string">&quot;Gates&quot;</span>,
+&#125;
+<span class="keyword">var</span> person2 = &#123;
+    firstName:<span class="string">&quot;Steve&quot;</span>,
+    lastName: <span class="string">&quot;Jobs&quot;</span>,
+&#125;
+person.fullName.call(person1);</code></pre>
+
+<pre><code class="highlight javascript"><span class="keyword">var</span> person = &#123;
+    fullName: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;
+        <span class="keyword">return</span> <span class="built_in">this</span>.firstName + <span class="string">&quot; &quot;</span> + <span class="built_in">this</span>.lastName;
+    &#125;
+&#125;
+<span class="keyword">var</span> person1 = &#123;
+    firstName: <span class="string">&quot;Bill&quot;</span>,
+    lastName: <span class="string">&quot;Gates&quot;</span>,
+&#125;
+person.fullName.apply(person1);</code></pre>
+
+<p>Call 方法和Apply方法的区别：</p>
+<p>call方法分别接受参数   apply 方法接受数组类型的参数</p>
+<pre><code class="highlight javascript"><span class="keyword">var</span> person = &#123;
+  fullName: <span class="function"><span class="keyword">function</span>(<span class="params">city, country</span>) </span>&#123;
+    <span class="keyword">return</span> <span class="built_in">this</span>.firstName + <span class="string">&quot; &quot;</span> + <span class="built_in">this</span>.lastName + <span class="string">&quot;,&quot;</span> + city + <span class="string">&quot;,&quot;</span> + country;
+  &#125;
+&#125;
+<span class="keyword">var</span> person1 = &#123;
+  firstName:<span class="string">&quot;John&quot;</span>,
+  lastName: <span class="string">&quot;Doe&quot;</span>
+&#125;
+person.fullName.apply(person1, [<span class="string">&quot;Oslo&quot;</span>, <span class="string">&quot;Norway&quot;</span>]);</code></pre>
+
+<pre><code class="highlight javascript"><span class="keyword">var</span> person = &#123;
+  fullName: <span class="function"><span class="keyword">function</span>(<span class="params">city, country</span>) </span>&#123;
+    <span class="keyword">return</span> <span class="built_in">this</span>.firstName + <span class="string">&quot; &quot;</span> + <span class="built_in">this</span>.lastName + <span class="string">&quot;,&quot;</span> + city + <span class="string">&quot;,&quot;</span> + country;
+  &#125;
+&#125;
+<span class="keyword">var</span> person1 = &#123;
+  firstName:<span class="string">&quot;John&quot;</span>,
+  lastName: <span class="string">&quot;Doe&quot;</span>
+&#125;
+person.fullName.call(person1, <span class="string">&quot;Oslo&quot;</span>, <span class="string">&quot;Norway&quot;</span>);</code></pre>
+
+</div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">Mr Xue</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="">http://xbget.cn/javascript/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，转载请注明出处 <a href="http://xbget.cn">Mr Xue的博客</a>！</span></div></blockquote></div></article><div class="p-info box"></div><aside id="toc"><div class="toc-title">目录</div><nav></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="prev" href="../vue/">&lt; vue</a><a class="next" href="../linux/">linux &gt;</a></div></section><footer><p>Copyright © 2016 - 2021 <a href="../." rel="nofollow">技术分享</a> | <strong><CC></CC></strong><br>Powered by Mr xue.</p></footer></div></div></div><script type="text/javascript" src="../js/search.js"></script><script type="text/javascript" src="../js/top.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script type="text/javascript" src="../js/fancybox.js?v=0.0.1" async></script></body></html>

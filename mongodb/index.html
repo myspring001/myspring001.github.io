@@ -1,0 +1,139 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><meta name="theme-color" content="#2d4356"><meta name="baidu-site-verification"><title>mongodb | 技术分享</title><link rel="stylesheet" type="text/css" href="../css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="../favicon.png"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script><meta name="generator" content="Hexo 5.4.0"></head><script type="text/javascript" src="../js/ready.js" async></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">LITREILY</a></div><div class="navbar-search"><!--= show a circle here--></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">技术分享</a></h1></div><p class="m-desc">心之所向，无惧无悔,<br>愿求仁得仁，复无怨怼！</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="../archives/">归档</a></li><li><span class="dot">●</span><a href="../categories/">分类</a></li><li><span class="dot">●</span><a href="../tags/">标签</a></li><li><span class="dot">●</span><a href="../about/">关于</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus="if(this.value=='搜索'){this.value='';}" onblur="if(this.value==''){this.value='搜索';}"><input type="text" style="display:none;"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">mongodb</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="">2021-04-21</a></span><span class="p-category"><i class="fa fa-folder"></i><a href="../categories/%E5%90%8E%E7%AB%AF/">后端</a>&nbsp;&bull;&nbsp;<a href="../categories/%E5%90%8E%E7%AB%AF/mongodb/">mongodb</a></span></div></div><div class="p-content"><p>1.什么是MongoDB？</p>
+<pre><code class="highlight markdown">MongoDB 是目前 NoSQL 数据库中使用最广泛的数据库之一，MongoDB 是一个开源文档数据库，提供高性能、高可用性和自动扩展的功能。MongoDB 是用 C++ 语言编写的非关系型数据库。
+MongoDB 可以存储具有更加复杂的数据结构的数据，具有很强的数据描述能力。</code></pre>
+
+<p>2.特点</p>
+<pre><code class="highlight markdown">主要特性有：面向集合存储，易于存储对象类型的数据，模式自由，支持动态查询，支持完全索引，支持复制和故障恢复，使用高效的二进制数据存储，文件存储格式为 BSON （ 一种 JSON 的扩展）等。
+MongoDB 的存储逻辑结构为文档，文档中采用键值对结构，文档中的 <span class="emphasis">_id 为主键，默认创建主键索引。</span>
+<span class="emphasis"></span>
+<span class="emphasis">BSON 在 JSON 的基础上增加了很多额外的类型，BSON 增加了“byte array”数据类型。这使得二进制的存储不再需要先进行 base64 转换再存为 JSON，减少了计算开销。</span></code></pre>
+
+<p>3.BSON 支持的数据类型</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NULL</td>
+<td>表示空值或者不存在的字段，{“x” : null}</td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td>布尔型有 true 和 false，{“x” : true}</td>
+</tr>
+<tr>
+<td>Number</td>
+<td>数值：客户端默认使用 64 位浮点型数值。{“x” : 3.14} 或 {“x” : 3}。对于整型值，包括 NumberInt（4 字节符号整数）或 NumberLong（8 字节符号整数），用户可以指定数值类型，{“x” : NumberInt(“3”)}</td>
+</tr>
+<tr>
+<td>String</td>
+<td>字符串：BSON 字符串是 UTF-8，{“x” : “中文”}</td>
+</tr>
+<tr>
+<td>Regular Expression</td>
+<td>正则表达式：语法与 <a target="_blank" rel="noopener" href="http://c.biancheng.net/js/">JavaScript</a> 的正则表达式相同，{“x” : /[cba]/}</td>
+</tr>
+<tr>
+<td>Array</td>
+<td>数组：使用“[]”表示，{“x” : [“a”, “b”, “c”]}</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>内嵌文档：文档的值是嵌套文档，{“a” : {“b” : 3}}</td>
+</tr>
+<tr>
+<td>ObjectId</td>
+<td>对象 id：对象 id 是一个 12 字节的字符串，是文档的唯一标识，{“x” : objectId()}</td>
+</tr>
+<tr>
+<td>BinaryData</td>
+<td>二进制数据：二进制数据是一个任意字节的字符串。它不能直接在 Shell 中使用。如果要将非 UTF-8 字符保存到数据库中，二进制数据是唯一的方式</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://c.biancheng.net/java/">Java</a>Script</td>
+<td>代码：查询和文档中可以包括任何 JavaScript 代码，{“x” : function(){/<em>…</em>/}}</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>日期：{“x” : new Date()}</td>
+</tr>
+<tr>
+<td>Timestamp</td>
+<td>时间戳：var a = new Timestamp()</td>
+</tr>
+</tbody></table>
+<p>4.数据库命名注意事项</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>注意事项</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>不能是空串</td>
+</tr>
+<tr>
+<td>2</td>
+<td>不得含有 /、\、?、$、空格、空字符等，基本只能使用 ASCII 中的字母和数字</td>
+</tr>
+<tr>
+<td>3</td>
+<td>区分大小写，建议全部小写</td>
+</tr>
+<tr>
+<td>4</td>
+<td>名称最多为 64 字节</td>
+</tr>
+<tr>
+<td>5</td>
+<td>不得使用保留的数据库名，如：admin、local、config</td>
+</tr>
+</tbody></table>
+<pre><code class="highlight markdown">注意：数据库最终会成为文件，数据库名就是文件的名称。
+由于数据库名称在 MongoDB 中不区分大小写，因此数据库名称不能仅仅区别于字符。
+对于在 Windows 上运行的 MongoDB，数据库名称不能包含以下字符：/、\、“、$、<span class="emphasis">*、＜ ＞、：、|、? 。</span>
+<span class="emphasis">对于在 UNIX 和 Linux 系统上运行的 MongoDB，数据库名称不能包含以下字符：/、\、。、&quot;、$。</span>
+<span class="emphasis">虽然 UTF-8 可以提供很多国家的语言的命名格式，在 MongoDB 数据库命名时也可以使用汉字作为数据库名，但是最好尽量采用英文字母、数字、字符等为主的命名格式。</span></code></pre>
+
+
+
+<p>5.保留数据库</p>
+<table>
+<thead>
+<tr>
+<th>库名</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>admin</td>
+<td>权限数据库，添加用户到该数据库中，该用户会自动继承数据库的所有权限</td>
+</tr>
+<tr>
+<td>local</td>
+<td>数据库中的数据永远不会被复制</td>
+</tr>
+<tr>
+<td>config</td>
+<td>分片时，config 数据库在内部使用，保存分子信息</td>
+</tr>
+<tr>
+<td>test</td>
+<td>默认数据库，可以用来做各种测试等</td>
+</tr>
+</tbody></table>
+<p>6.索引</p>
+<pre><code class="highlight markdown">索引可以提升文档的查询速度，但建立索引的过程需要使用计算与存储资源，在已经建立索引的前提下，插入新的文档会引起索引顺序的重排。
+
+MongoDB 的索引是基于 B-tree 数据结构及对应算法形成的。树索引存储特定字段或字段集的值，按字段值排序。索引条目的排序支持有效的等式匹配和基于范围的查询操作。
+
+MongoDB 在创建集合时，会默认在 <span class="emphasis">_id 字段上创建唯一索引。该索引可防止客户端插入具有相同字段的两个文档，_</span>id 字段上的索引不能被删除。
+
+MongoDB 中索引的类型大致包含单键索引、复合索引、多键值索引、地理索引、全文索引、 散列索引等，下面简单介绍各类索引的用法。</code></pre>
+
+</div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">Mr Xue</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="">http://xbget.cn/mongodb/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，转载请注明出处 <a href="http://xbget.cn">Mr Xue的博客</a>！</span></div></blockquote></div></article><div class="p-info box"></div><aside id="toc"><div class="toc-title">目录</div><nav></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="prev" href="../mq/">&lt; mq</a><a class="next" href="../redis/">redis &gt;</a></div></section><footer><p>Copyright © 2016 - 2021 <a href="../." rel="nofollow">技术分享</a> | <strong><CC></CC></strong><br>Powered by Mr xue.</p></footer></div></div></div><script type="text/javascript" src="../js/search.js"></script><script type="text/javascript" src="../js/top.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script type="text/javascript" src="../js/fancybox.js?v=0.0.1" async></script></body></html>
