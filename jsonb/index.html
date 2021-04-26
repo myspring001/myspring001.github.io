@@ -1,6 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><meta name="theme-color" content="#2d4356"><meta name="baidu-site-verification"><title>jsonb | 技术分享</title><link rel="stylesheet" type="text/css" href="../css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="../favicon.png"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script><meta name="generator" content="Hexo 5.4.0"></head><script type="text/javascript" src="../js/ready.js" async></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">LITREILY</a></div><div class="navbar-search"><!--= show a circle here--></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">技术分享</a></h1></div><p class="m-desc">心之所向，无惧无悔,<br>愿求仁得仁，复无怨怼！</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="../archives/">归档</a></li><li><span class="dot">●</span><a href="../categories/">分类</a></li><li><span class="dot">●</span><a href="../tags/">标签</a></li><li><span class="dot">●</span><a href="../about/">关于</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus="if(this.value=='搜索'){this.value='';}" onblur="if(this.value==''){this.value='搜索';}"><input type="text" style="display:none;"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">jsonb</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="">2021-04-23</a></span><span class="p-category"><i class="fa fa-folder"></i><a href="../categories/%E5%90%8E%E7%AB%AF/">后端</a>&nbsp;&bull;&nbsp;<a href="../categories/%E5%90%8E%E7%AB%AF/jsonb/">jsonb</a></span></div></div><div class="p-content"><p>JSON-B是用于将Java对象与JSON消息相互转换的标准绑定层。它定义了一种默认的映射算法，用于将现有的Java类转换为JSON。</p>
-<p>添加依赖：</p>
-<pre><code class="highlight xml"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span>
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><meta name="theme-color" content="#2d4356"><meta name="baidu-site-verification"><title>jsonb | 技术分享</title><link rel="stylesheet" type="text/css" href="../css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="../favicon.png"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script><meta name="generator" content="Hexo 5.4.0"></head><script type="text/javascript" src="../js/ready.js" async></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">LITREILY</a></div><div class="navbar-search"></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">技术分享</a></h1></div><p class="m-desc">好向枝头采春色,<br>不知春色在蓝中！</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="../archives/">归档</a></li><li><span class="dot">●</span><a href="../categories/">分类</a></li><li><span class="dot">●</span><a href="../tags/">标签</a></li><li><span class="dot">●</span><a href="../about/">关于</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus='"搜索"==this.value&&(this.value="")' onblur='""==this.value&&(this.value="搜索")'><input type="text" style="display:none"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">jsonb</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="">2021-04-23</a></span><span class="p-category"><i class="fa fa-folder"></i><a href="../categories/%E5%90%8E%E7%AB%AF/">后端</a>&nbsp;&bull;&nbsp;<a href="../categories/%E5%90%8E%E7%AB%AF/jsonb/">jsonb</a></span></div></div><div class="p-content"><p>JSON-B是用于将Java对象与JSON消息相互转换的标准绑定层。它定义了一种默认的映射算法，用于将现有的Java类转换为JSON。</p><p>添加依赖：</p><pre><code class="highlight xml"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span>
     <span class="comment">&lt;!-- JSON-P --&gt;</span>
     <span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
         <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.glassfish<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
@@ -23,10 +21,7 @@
         <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span>
         <span class="tag">&lt;<span class="name">scope</span>&gt;</span>runtime<span class="tag">&lt;/<span class="name">scope</span>&gt;</span>
     <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></code></pre>
-
-<p>序列化和反序列化的使用：</p>
-<pre><code class="highlight java"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;
+<span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></code></pre><p>序列化和反序列化的使用：</p><pre><code class="highlight java"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;
     <span class="keyword">public</span> String name;
     <span class="keyword">public</span> <span class="keyword">int</span> age;
     <span class="keyword">public</span> <span class="keyword">boolean</span> bites;
@@ -44,10 +39,7 @@ String result = jsonb.toJson(dog);
 
 <span class="comment">// Deserialize back</span>
 dog = jsonb.fromJson(<span class="string">&quot;&#123;\&quot;name\&quot;:\&quot;Falco\&quot;,\&quot;age\&quot;:4,\&quot;bites\&quot;:false&#125;&quot;</span>, Dog.class);
-</code></pre>
-
-<p>对集合类型序列化：</p>
-<pre><code class="highlight java"><span class="comment">// List of dogs</span>
+</code></pre><p>对集合类型序列化：</p><pre><code class="highlight java"><span class="comment">// List of dogs</span>
 List dogs = <span class="keyword">new</span> ArrayList();
 dogs.add(falco);
 dogs.add(cassidy);
@@ -59,10 +51,7 @@ String result = jsonb.toJson(dogs);
 <span class="comment">// We can also deserialize back into a raw collection, but since there is no way to infer a type here,</span>
 <span class="comment">// the result will be a list of java.util.Map instances with string keys.</span>
 dogs = jsonb.fromJson(result, ArrayList.getClass());
-</code></pre>
-
-<p>格式化输出：</p>
-<pre><code class="highlight java"><span class="comment">// Create custom configuration with formatted output</span>
+</code></pre><p>格式化输出：</p><pre><code class="highlight java"><span class="comment">// Create custom configuration with formatted output</span>
 JsonbConfig config = <span class="keyword">new</span> JsonbConfig()
     .withFormatting(<span class="keyword">true</span>);
 
@@ -70,24 +59,15 @@ JsonbConfig config = <span class="keyword">new</span> JsonbConfig()
 Jsonb jsonb = JsonbBuilder.create(config);
 
 <span class="comment">// Use it!</span>
-String result = jsonb.toJson(pojo);</code></pre>
-
-<p>@JsonbProperty用于更改一个特定属性的名称。</p>
-<pre><code class="highlight java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;
+String result = jsonb.toJson(pojo);</code></pre><p>@JsonbProperty用于更改一个特定属性的名称。</p><pre><code class="highlight java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;
     <span class="meta">@JsonbProperty(&quot;person-name&quot;)</span>
     <span class="keyword">public</span> String name;
 
     <span class="keyword">public</span> String profession;
-&#125;</code></pre>
-
-<p>生成的JSON文档将如下所示：</p>
-<pre><code class="highlight xml">&#123;
+&#125;</code></pre><p>生成的JSON文档将如下所示：</p><pre><code class="highlight xml">&#123;
     &quot;person-name&quot;: &quot;Jason Bourne&quot;,
     &quot;profession&quot;: &quot;Super Agent&quot;
-&#125;</code></pre>
-
-<p>@JsonbDateFormat和@JsonbNumberFormat批注来完成：</p>
-<pre><code class="highlight java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;
+&#125;</code></pre><p>@JsonbDateFormat和@JsonbNumberFormat批注来完成：</p><pre><code class="highlight java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;
     <span class="keyword">private</span> String name;
 
     <span class="meta">@JsonbDateFormat(&quot;dd.MM.yyyy&quot;)</span>
@@ -97,7 +77,4 @@ String result = jsonb.toJson(pojo);</code></pre>
     <span class="keyword">private</span> BigDecimal salary;
 
     <span class="comment">// public getters/setters ...</span>
-&#125;</code></pre>
-
-<p>JSON-B fastjson jackson gson 序列化的组件很多，大家可以根据自己的熟练程度和喜好使用。</p>
-</div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">Mr Xue</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="">http://xbget.cn/jsonb/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，转载请注明出处 <a href="http://xbget.cn">Mr Xue的博客</a>！</span></div></blockquote></div></article><div class="p-info box"><span class="p-tags"><i class="fa fa-tag"></i><a href="../tags/jsonb/">jsonb</a></span></div><aside id="toc"><div class="toc-title">目录</div><nav></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="prev" href="../music/">&lt; music</a><a class="next" href="../fastdfs/">fastdfs &gt;</a></div></section><footer><p>Copyright © 2016 - 2021 <a href="../." rel="nofollow">技术分享</a> | <strong><CC></CC></strong><br>Powered by Mr xue.</p></footer></div></div></div><script type="text/javascript" src="../js/search.js"></script><script type="text/javascript" src="../js/top.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script type="text/javascript" src="../js/fancybox.js?v=0.0.1" async></script></body></html>
+&#125;</code></pre><p>JSON-B fastjson jackson gson 序列化的组件很多，大家可以根据自己的熟练程度和喜好使用。</p></div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">Mr Xue</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="">http://xbget.cn/jsonb/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，转载请注明出处 <a href="http://xbget.cn">Mr Xue的博客</a>！</span></div></blockquote></div></article><div class="p-info box"><span class="p-tags"><i class="fa fa-tag"></i><a href="../tags/jsonb/">jsonb</a></span></div><aside id="toc"><div class="toc-title">目录</div><nav></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="prev" href="../music/">&lt; media</a><a class="next" href="../fastdfs/">fastdfs &gt;</a></div></section><footer><p>Copyright © 2016 - 2021 <a href="../." rel="nofollow">技术分享</a> | <strong><cc></cc></strong><br>Powered by Mr xue.</p></footer></div></div></div><script type="text/javascript" src="../js/search.js"></script><script type="text/javascript" src="../js/top.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script type="text/javascript" src="../js/fancybox.js?v=0.0.1" async></script></body></html>

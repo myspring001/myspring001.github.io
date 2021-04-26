@@ -1,193 +1,43 @@
-<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><meta name="theme-color" content="#2d4356"><meta name="baidu-site-verification"><title>MySQL | 技术分享</title><link rel="stylesheet" type="text/css" href="../css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="../favicon.png"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script><meta name="generator" content="Hexo 5.4.0"></head><script type="text/javascript" src="../js/ready.js" async></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">LITREILY</a></div><div class="navbar-search"><!--= show a circle here--></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">技术分享</a></h1></div><p class="m-desc">心之所向，无惧无悔,<br>愿求仁得仁，复无怨怼！</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="../archives/">归档</a></li><li><span class="dot">●</span><a href="../categories/">分类</a></li><li><span class="dot">●</span><a href="../tags/">标签</a></li><li><span class="dot">●</span><a href="../about/">关于</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus="if(this.value=='搜索'){this.value='';}" onblur="if(this.value==''){this.value='搜索';}"><input type="text" style="display:none;"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">MySQL</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="">2021-04-21</a></span><span class="p-category"><i class="fa fa-folder"></i><a href="../categories/%E5%90%8E%E7%AB%AF/">后端</a>&nbsp;&bull;&nbsp;<a href="../categories/%E5%90%8E%E7%AB%AF/MySQL/">MySQL</a></span></div></div><div class="p-content"><p><strong>MySQL数据库的查询</strong></p>
-<pre><code class="highlight markdown">语法：SELECT field1, field2,...fieldN FROM table<span class="emphasis">_name1, table_</span>name2...
-[WHERE condition1 [AND [OR]] condition2.....</code></pre>
-
-<table>
-<thead>
-<tr>
-<th align="left">操作符</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">=</td>
-<td align="left">等号，检测两个值是否相等，如果相等返回true</td>
-</tr>
-<tr>
-<td align="left">&lt;&gt;, !=</td>
-<td align="left">不等于，检测两个值是否相等，如果不相等返回true</td>
-</tr>
-<tr>
-<td align="left">&gt;</td>
-<td align="left">大于号，检测左边的值是否大于右边的值, 如果左边的值大于右边的值返回true</td>
-</tr>
-<tr>
-<td align="left">&lt;</td>
-<td align="left">小于号，检测左边的值是否小于右边的值, 如果左边的值小于右边的值返回true</td>
-</tr>
-<tr>
-<td align="left">&gt;=</td>
-<td align="left">大于等于号，检测左边的值是否大于或等于右边的值, 如果左边的值大于或等于右边的值返回true</td>
-</tr>
-<tr>
-<td align="left">&lt;=</td>
-<td align="left">小于等于号，检测左边的值是否小于或等于右边的值, 如果左边的值小于或等于右边的值返回true</td>
-</tr>
-</tbody></table>
-<p><strong>MySQL like 子句</strong></p>
-<pre><code class="highlight markdown">SELECT field1, field2,...fieldN 
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><meta name="theme-color" content="#2d4356"><meta name="baidu-site-verification"><title>MySQL | 技术分享</title><link rel="stylesheet" type="text/css" href="../css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="../favicon.png"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script><meta name="generator" content="Hexo 5.4.0"></head><script type="text/javascript" src="../js/ready.js" async></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">LITREILY</a></div><div class="navbar-search"></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">技术分享</a></h1></div><p class="m-desc">好向枝头采春色,<br>不知春色在蓝中！</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="../archives/">归档</a></li><li><span class="dot">●</span><a href="../categories/">分类</a></li><li><span class="dot">●</span><a href="../tags/">标签</a></li><li><span class="dot">●</span><a href="../about/">关于</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus='"搜索"==this.value&&(this.value="")' onblur='""==this.value&&(this.value="搜索")'><input type="text" style="display:none"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">MySQL</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="">2021-04-21</a></span><span class="p-category"><i class="fa fa-folder"></i><a href="../categories/%E5%90%8E%E7%AB%AF/">后端</a>&nbsp;&bull;&nbsp;<a href="../categories/%E5%90%8E%E7%AB%AF/MySQL/">MySQL</a></span></div></div><div class="p-content"><p><strong>MySQL数据库的查询</strong></p><pre><code class="highlight markdown">语法：SELECT field1, field2,...fieldN FROM table<span class="emphasis">_name1, table_</span>name2...
+[WHERE condition1 [AND [OR]] condition2.....</code></pre><table><thead><tr><th align="left">操作符</th><th align="left">描述</th></tr></thead><tbody><tr><td align="left">=</td><td align="left">等号，检测两个值是否相等，如果相等返回true</td></tr><tr><td align="left">&lt;&gt;, !=</td><td align="left">不等于，检测两个值是否相等，如果不相等返回true</td></tr><tr><td align="left">&gt;</td><td align="left">大于号，检测左边的值是否大于右边的值, 如果左边的值大于右边的值返回true</td></tr><tr><td align="left">&lt;</td><td align="left">小于号，检测左边的值是否小于右边的值, 如果左边的值小于右边的值返回true</td></tr><tr><td align="left">&gt;=</td><td align="left">大于等于号，检测左边的值是否大于或等于右边的值, 如果左边的值大于或等于右边的值返回true</td></tr><tr><td align="left">&lt;=</td><td align="left">小于等于号，检测左边的值是否小于或等于右边的值, 如果左边的值小于或等于右边的值返回true</td></tr></tbody></table><p><strong>MySQL like 子句</strong></p><pre><code class="highlight markdown">SELECT field1, field2,...fieldN 
 FROM table<span class="emphasis">_name</span>
-<span class="emphasis">WHERE field1 LIKE condition1</span></code></pre>
-
-<ul>
-<li>LIKE 通常与 <strong>%</strong> 一同使用，类似于一个元字符的搜</li>
-</ul>
-<p><strong>MySQL  UNION操作符</strong></p>
-<p>MySQL UNION 操作符用于连接两个以上的 SELECT 语句的结果组合到一个结果集合中。多个 SELECT 语句会删除重复的数据。</p>
-<p>MySQL UNION操作符格式</p>
-<pre><code class="highlight markdown">SELECT expression1, expression2, ... expression<span class="emphasis">_n</span>
+<span class="emphasis">WHERE field1 LIKE condition1</span></code></pre><ul><li>LIKE 通常与 <strong>%</strong> 一同使用，类似于一个元字符的搜</li></ul><p><strong>MySQL UNION操作符</strong></p><p>MySQL UNION 操作符用于连接两个以上的 SELECT 语句的结果组合到一个结果集合中。多个 SELECT 语句会删除重复的数据。</p><p>MySQL UNION操作符格式</p><pre><code class="highlight markdown">SELECT expression1, expression2, ... expression<span class="emphasis">_n</span>
 <span class="emphasis">FROM tables</span>
 <span class="emphasis">[WHERE conditions]</span>
 <span class="emphasis">UNION [ALL | DISTINCT]</span>
 <span class="emphasis">SELECT expression1, expression2, ... expression_</span>n
 FROM tables
-[WHERE conditions];</code></pre>
-
-<p>参数：</p>
-<p><strong>DISTINCT:</strong> 可选，删除结果集中重复的数据。默认情况下 UNION 操作符已经删除了重复数据，所以 DISTINCT 修饰符对结果没啥影响</p>
-<p><strong>ALL:</strong> 可选，返回所有结果集，包含重复数据。</p>
-<p>MySQL 排序:</p>
-<p>SQL SELECT 语句使用 ORDER BY 子句将查询数据排序后再返回数据</p>
-<pre><code class="highlight markdown">SELECT field1, field2,...fieldN FROM table<span class="emphasis">_name1, table_</span>name2...
-ORDER BY field1 [<span class="string">ASC [DESC</span>][<span class="symbol">默认 ASC</span>]], [<span class="string">field2...</span>] [<span class="string">ASC [DESC</span>][<span class="symbol">默认 ASC</span>]]</code></pre>
-
-<p>MySQL对数据结果集进行分组</p>
-<pre><code class="highlight markdown">GROUP BY 语句根据一个或多个列对结果集进行分组。
-在分组的列上我们可以使用 COUNT, SUM, AVG,等函数。</code></pre>
-
-<p>MySQL连接查询</p>
-<pre><code class="highlight markdown">INNER JOIN（内连接,或等值连接）：获取两个表中字段匹配关系的记录。
+[WHERE conditions];</code></pre><p>参数：</p><p><strong>DISTINCT:</strong> 可选，删除结果集中重复的数据。默认情况下 UNION 操作符已经删除了重复数据，所以 DISTINCT 修饰符对结果没啥影响</p><p><strong>ALL:</strong> 可选，返回所有结果集，包含重复数据。</p><p>MySQL 排序:</p><p>SQL SELECT 语句使用 ORDER BY 子句将查询数据排序后再返回数据</p><pre><code class="highlight markdown">SELECT field1, field2,...fieldN FROM table<span class="emphasis">_name1, table_</span>name2...
+ORDER BY field1 [<span class="string">ASC [DESC</span>][<span class="symbol">默认 ASC</span>]], [<span class="string">field2...</span>] [<span class="string">ASC [DESC</span>][<span class="symbol">默认 ASC</span>]]</code></pre><p>MySQL对数据结果集进行分组</p><pre><code class="highlight markdown">GROUP BY 语句根据一个或多个列对结果集进行分组。
+在分组的列上我们可以使用 COUNT, SUM, AVG,等函数。</code></pre><p>MySQL连接查询</p><pre><code class="highlight markdown">INNER JOIN（内连接,或等值连接）：获取两个表中字段匹配关系的记录。
 LEFT JOIN（左连接）：获取左表所有记录，即使右表没有对应匹配的记录。
-RIGHT JOIN（右连接）： 与 LEFT JOIN 相反，用于获取右表所有记录，即使左表没有对应匹配的记录。</code></pre>
-
-<p>MySQL正则不表达式</p>
-<table>
-<thead>
-<tr>
-<th align="left">式</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">^</td>
-<td align="left">匹配输入字符串的开始位置。如果设置了 RegExp 对象的 Multiline 属性，^ 也匹配 ‘\n’ 或 ‘\r’ 之后的位置。</td>
-</tr>
-<tr>
-<td align="left">$</td>
-<td align="left">匹配输入字符串的结束位置。如果设置了RegExp 对象的 Multiline 属性，$ 也匹配 ‘\n’ 或 ‘\r’ 之前的位置。</td>
-</tr>
-<tr>
-<td align="left">.</td>
-<td align="left">匹配除 “\n” 之外的任何单个字符。要匹配包括 ‘\n’ 在内的任何字符，请使用像 ‘[.\n]’ 的模式。</td>
-</tr>
-<tr>
-<td align="left">[…]</td>
-<td align="left">字符集合。匹配所包含的任意一个字符。例如， ‘[abc]’ 可以匹配 “plain” 中的 ‘a’。</td>
-</tr>
-<tr>
-<td align="left">[^…]</td>
-<td align="left">负值字符集合。匹配未包含的任意字符。例如， ‘[^abc]’ 可以匹配 “plain” 中的’p’。</td>
-</tr>
-<tr>
-<td align="left">p1|p2|p3</td>
-<td align="left">匹配 p1 或 p2 或 p3。例如，’z|food’ 能匹配 “z” 或 “food”。’(z|f)ood’ 则匹配 “zood” 或 “food”。</td>
-</tr>
-<tr>
-<td align="left">*</td>
-<td align="left">匹配前面的子表达式零次或多次。例如，zo* 能匹配 “z” 以及 “zoo”。* 等价于{0,}。</td>
-</tr>
-<tr>
-<td align="left">+</td>
-<td align="left">匹配前面的子表达式一次或多次。例如，’zo+’ 能匹配 “zo” 以及 “zoo”，但不能匹配 “z”。+ 等价于 {1,}。</td>
-</tr>
-<tr>
-<td align="left">{n}</td>
-<td align="left">n 是一个非负整数。匹配确定的 n 次。例如，’o{2}’ 不能匹配 “Bob” 中的 ‘o’，但是能匹配 “food” 中的两个 o。</td>
-</tr>
-<tr>
-<td align="left">{n,m}</td>
-<td align="left">m 和 n 均为非负整数，其中n &lt;= m。最少匹配 n 次且最多匹配 m 次。</td>
-</tr>
-</tbody></table>
-<pre><code class="highlight markdown">查找name字段中以&#x27;st&#x27;为开头的所有数据：
+RIGHT JOIN（右连接）： 与 LEFT JOIN 相反，用于获取右表所有记录，即使左表没有对应匹配的记录。</code></pre><p>MySQL正则不表达式</p><table><thead><tr><th align="left">式</th><th align="left">描述</th></tr></thead><tbody><tr><td align="left">^</td><td align="left">匹配输入字符串的开始位置。如果设置了 RegExp 对象的 Multiline 属性，^ 也匹配 ‘\n’ 或 ‘\r’ 之后的位置。</td></tr><tr><td align="left">$</td><td align="left">匹配输入字符串的结束位置。如果设置了RegExp 对象的 Multiline 属性，$ 也匹配 ‘\n’ 或 ‘\r’ 之前的位置。</td></tr><tr><td align="left">.</td><td align="left">匹配除 “\n” 之外的任何单个字符。要匹配包括 ‘\n’ 在内的任何字符，请使用像 ‘[.\n]’ 的模式。</td></tr><tr><td align="left">[…]</td><td align="left">字符集合。匹配所包含的任意一个字符。例如， ‘[abc]’ 可以匹配 “plain” 中的 ‘a’。</td></tr><tr><td align="left">[^…]</td><td align="left">负值字符集合。匹配未包含的任意字符。例如， ‘[^abc]’ 可以匹配 “plain” 中的’p’。</td></tr><tr><td align="left">p1|p2|p3</td><td align="left">匹配 p1 或 p2 或 p3。例如，’z|food’ 能匹配 “z” 或 “food”。’(z|f)ood’ 则匹配 “zood” 或 “food”。</td></tr><tr><td align="left">*</td><td align="left">匹配前面的子表达式零次或多次。例如，zo* 能匹配 “z” 以及 “zoo”。* 等价于{0,}。</td></tr><tr><td align="left">+</td><td align="left">匹配前面的子表达式一次或多次。例如，’zo+’ 能匹配 “zo” 以及 “zoo”，但不能匹配 “z”。+ 等价于 {1,}。</td></tr><tr><td align="left">{n}</td><td align="left">n 是一个非负整数。匹配确定的 n 次。例如，’o{2}’ 不能匹配 “Bob” 中的 ‘o’，但是能匹配 “food” 中的两个 o。</td></tr><tr><td align="left">{n,m}</td><td align="left">m 和 n 均为非负整数，其中n &lt;= m。最少匹配 n 次且最多匹配 m 次。</td></tr></tbody></table><pre><code class="highlight markdown">查找name字段中以&#x27;st&#x27;为开头的所有数据：
 SELECT name FROM person<span class="emphasis">_tbl WHERE name REGEXP &#x27;^st&#x27;;</span>
 <span class="emphasis">查找name字段中以&#x27;ok&#x27;为结尾的所有数据：</span>
 <span class="emphasis">SELECT name FROM person_</span>tbl WHERE name REGEXP &#x27;ok$&#x27;;
 查找name字段中包含&#x27;mar&#x27;字符串的所有数据：
 SELECT name FROM person<span class="emphasis">_tbl WHERE name REGEXP &#x27;mar&#x27;;</span>
 <span class="emphasis">查找name字段中以元音字符开头或以&#x27;ok&#x27;字符串结尾的所有数据：</span>
-<span class="emphasis">SELECT name FROM person_</span>tbl WHERE name REGEXP &#x27;^[aeiou]|ok$&#x27;;</code></pre>
-
-<p>MySQL 事务</p>
-<p>事务用来管理 insert,update,delete 语句</p>
-<pre><code class="highlight markdown">原子性：一个事务（transaction）中的所有操作，要么全部完成，要么全部不完成，不会结束在中间某个环节。事务在执行过程中发生错误，会被回滚（Rollback）到事务开始前的状态，就像这个事务从来没有执行过一样。
+<span class="emphasis">SELECT name FROM person_</span>tbl WHERE name REGEXP &#x27;^[aeiou]|ok$&#x27;;</code></pre><p>MySQL 事务</p><p>事务用来管理 insert,update,delete 语句</p><pre><code class="highlight markdown">原子性：一个事务（transaction）中的所有操作，要么全部完成，要么全部不完成，不会结束在中间某个环节。事务在执行过程中发生错误，会被回滚（Rollback）到事务开始前的状态，就像这个事务从来没有执行过一样。
 
 一致性：在事务开始之前和事务结束以后，数据库的完整性没有被破坏。这表示写入的资料必须完全符合所有的预设规则，这包含资料的精确度、串联性以及后续数据库可以自发性地完成预定的工作。
 
 隔离性：数据库允许多个并发事务同时对其数据进行读写和修改的能力，隔离性可以防止多个事务并发执行时由于交叉执行而导致数据的不一致。事务隔离分为不同级别，包括读未提交（Read uncommitted）、读提交（read committed）、可重复读（repeatable read）和串行化（Serializable）。
 
-持久性：事务处理结束后，对数据的修改就是永久的，即便系统故障也不会丢失。</code></pre>
-
-<p>1、用 BEGIN, ROLLBACK, COMMIT来实现</p>
-<ul>
-<li><strong>BEGIN</strong> 开始一个事务</li>
-<li><strong>ROLLBACK</strong> 事务回滚</li>
-<li><strong>COMMIT</strong> 事务确认</li>
-</ul>
-<p>2、直接用 SET 来改变 MySQL 的自动提交模式:</p>
-<ul>
-<li><strong>SET AUTOCOMMIT=0</strong> 禁止自动提交</li>
-<li><strong>SET AUTOCOMMIT=1</strong> 开启自动提交</li>
-</ul>
-<p>MySQL 索引</p>
-<p>MySQL索引的建立对于MySQL的高效运行是很重要的，索引可以大大提高MySQL的检索速度。</p>
-<p>但过多的使用索引将会造成滥用。因此索引也会有它的缺点：虽然索引大大提高了查询速度，同时却会降低更新表的速度，如对表进行INSERT、UPDATE和DELETE。因为更新表时，MySQL不仅要保存数据，还要保存一下索引文件。</p>
-<p>建立索引会占用磁盘空间的索引文件。</p>
-<p>创建索引：</p>
-<pre><code class="highlight markdown">CREATE INDEX indexName ON table<span class="emphasis">_name (column_</span>name)
+持久性：事务处理结束后，对数据的修改就是永久的，即便系统故障也不会丢失。</code></pre><p>1、用 BEGIN, ROLLBACK, COMMIT来实现</p><ul><li><strong>BEGIN</strong> 开始一个事务</li><li><strong>ROLLBACK</strong> 事务回滚</li><li><strong>COMMIT</strong> 事务确认</li></ul><p>2、直接用 SET 来改变 MySQL 的自动提交模式:</p><ul><li><strong>SET AUTOCOMMIT=0</strong> 禁止自动提交</li><li><strong>SET AUTOCOMMIT=1</strong> 开启自动提交</li></ul><p>MySQL 索引</p><p>MySQL索引的建立对于MySQL的高效运行是很重要的，索引可以大大提高MySQL的检索速度。</p><p>但过多的使用索引将会造成滥用。因此索引也会有它的缺点：虽然索引大大提高了查询速度，同时却会降低更新表的速度，如对表进行INSERT、UPDATE和DELETE。因为更新表时，MySQL不仅要保存数据，还要保存一下索引文件。</p><p>建立索引会占用磁盘空间的索引文件。</p><p>创建索引：</p><pre><code class="highlight markdown">CREATE INDEX indexName ON table<span class="emphasis">_name (column_</span>name)
 ALTER table tableName ADD INDEX indexName(columnName)
 
 CREATE UNIQUE INDEX indexName ON mytable(username(length)) 创建唯一索引
-ALTER table mytable ADD UNIQUE [indexName] (username(length))</code></pre>
+ALTER table mytable ADD UNIQUE [indexName] (username(length))</code></pre><p>删除索引：</p><pre><code class="highlight markdown">DROP INDEX [indexName] ON mytable;</code></pre><p>查询索引信息：</p><pre><code class="highlight markdown">SHOW INDEX FROM table<span class="emphasis">_name; \G</span></code></pre><p>MySQL临时表</p><pre><code class="highlight markdown">MySQL 临时表在我们需要保存一些临时数据时是非常有用的。临时表只在当前连接可见，当关闭连接时，Mysql会自动删除表并释放所有空间。
+</code></pre><p>MySQL 复制表</p><pre><code class="highlight markdown">如果我们需要完全的复制MySQL的数据表，包括表的结构，索引，默认值等。 如果仅仅使用CREATE TABLE ... SELECT 命令，是无法实现的。
 
-<p>删除索引：</p>
-<pre><code class="highlight markdown">DROP INDEX [indexName] ON mytable;</code></pre>
-
-<p>查询索引信息：</p>
-<pre><code class="highlight markdown">SHOW INDEX FROM table<span class="emphasis">_name; \G</span></code></pre>
-
-
-
-<p>MySQL临时表</p>
-<pre><code class="highlight markdown">MySQL 临时表在我们需要保存一些临时数据时是非常有用的。临时表只在当前连接可见，当关闭连接时，Mysql会自动删除表并释放所有空间。
-</code></pre>
-
-<p>MySQL 复制表</p>
-<pre><code class="highlight markdown">如果我们需要完全的复制MySQL的数据表，包括表的结构，索引，默认值等。 如果仅仅使用CREATE TABLE ... SELECT 命令，是无法实现的。
-
-如果你想复制表的内容，你就可以使用 INSERT INTO ... SELECT 语句来实现。</code></pre>
-
-<p>导出数据</p>
-<pre><code class="highlight markdown">SELECT <span class="emphasis">* FROM runoob_tbl  INTO OUTFILE &#x27;/tmp/runoob.txt&#x27;;</span>
+如果你想复制表的内容，你就可以使用 INSERT INTO ... SELECT 语句来实现。</code></pre><p>导出数据</p><pre><code class="highlight markdown">SELECT <span class="emphasis">* FROM runoob_tbl  INTO OUTFILE &#x27;/tmp/runoob.txt&#x27;;</span>
 <span class="emphasis">mysqldump 是 mysql 用于转存储数据库的实用程序。它主要产生一个 SQL 脚本，其中包含从头重新创建数据库所必需的命令 CREATE TABLE INSERT 等。</span>
 <span class="emphasis"></span>
 <span class="emphasis">使用 mysqldump 导出数据需要使用 --tab 选项来指定导出文件指定的目录，该目标必须是可写的。</span>
 <span class="emphasis"></span>
 <span class="emphasis">mysqldump -u root -p RUNOOB runoob_tbl &gt; dump.txt</span>
-<span class="emphasis">password <span class="strong">****</span><span class="strong">**</span></span></code></pre>
-
-<p>MySQL优化语句</p>
-<pre><code class="highlight markdown">应尽量避免在 where 子句中使用!=或&lt;&gt;操作符，否则将引擎放弃使用索引而进行全表扫描
+<span class="emphasis">password <span class="strong">****</span><span class="strong">**</span></span></code></pre><p>MySQL优化语句</p><pre><code class="highlight markdown">应尽量避免在 where 子句中使用!=或&lt;&gt;操作符，否则将引擎放弃使用索引而进行全表扫描
 对查询进行优化，应尽量避免全表扫描，首先应考虑在where及order by涉及的列上建立索引。
 应尽量避免在where子句中对字段进行null值判断，否则将导致引擎放弃使用索引而进行全表扫描，
 如：select name from table where num is null
@@ -207,14 +57,4 @@ in和not in也要慎用，否则会导致全表扫描
 应尽量避免在where子句中对字段进行函数操作，这将导致引擎放弃使用索引而进行全表扫描。
 尽量使用数字型字段，若只含数值信息的字段尽量不要设计为字符型，这会降低查询和连接的性能，并会增加存储开销。
 避免频繁创建和删除临时表，以减少系统表资源的消耗。临时表并不是不可使用，适当地使用它们可以使某些例程更有效
-</code></pre>
-
-
-
-
-
-
-
-
-
-</div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">Mr Xue</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="">http://xbget.cn/MySQL/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，转载请注明出处 <a href="http://xbget.cn">Mr Xue的博客</a>！</span></div></blockquote></div></article><div class="p-info box"></div><aside id="toc"><div class="toc-title">目录</div><nav></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="prev" href="../maven/">&lt; maven</a><a class="next" href="../mq/">mq &gt;</a></div></section><footer><p>Copyright © 2016 - 2021 <a href="../." rel="nofollow">技术分享</a> | <strong><CC></CC></strong><br>Powered by Mr xue.</p></footer></div></div></div><script type="text/javascript" src="../js/search.js"></script><script type="text/javascript" src="../js/top.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script type="text/javascript" src="../js/fancybox.js?v=0.0.1" async></script></body></html>
+</code></pre></div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">Mr Xue</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="">http://xbget.cn/MySQL/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，转载请注明出处 <a href="http://xbget.cn">Mr Xue的博客</a>！</span></div></blockquote></div></article><div class="p-info box"></div><aside id="toc"><div class="toc-title">目录</div><nav></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="prev" href="../maven/">&lt; maven</a><a class="next" href="../mq/">mq &gt;</a></div></section><footer><p>Copyright © 2016 - 2021 <a href="../." rel="nofollow">技术分享</a> | <strong><cc></cc></strong><br>Powered by Mr xue.</p></footer></div></div></div><script type="text/javascript" src="../js/search.js"></script><script type="text/javascript" src="../js/top.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script type="text/javascript" src="../js/fancybox.js?v=0.0.1" async></script></body></html>
