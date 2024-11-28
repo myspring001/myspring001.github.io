@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><meta name="theme-color" content="#2d4356"><meta name="baidu-site-verification"><title>satoken | 技术分享</title><link rel="stylesheet" type="text/css" href="../css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="../favicon.png"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script><meta name="generator" content="Hexo 5.4.0"></head><script type="text/javascript" src="../js/ready.js" async></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">LITREILY</a></div><div class="navbar-search"></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">技术分享</a></h1></div><p class="m-desc">好向枝头采春色,<br>不知春色在篮中！</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="../archives/">归档</a></li><li><span class="dot">●</span><a href="../categories/">分类</a></li><li><span class="dot">●</span><a href="../tags/">标签</a></li><li><span class="dot">●</span><a href="../about/">关于</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus='"搜索"==this.value&&(this.value="")' onblur='""==this.value&&(this.value="搜索")'><input type="text" style="display:none"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">satoken</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="">2024-11-28</a></span></div></div><div class="p-content"><p>简介：<strong>Sa-Token</strong> 是一个轻量级 Java 权限认证框架，主要解决：<strong>登录认证</strong>、<strong>权限认证</strong>、<strong>单点登录</strong>、<strong>OAuth2.0</strong>、<strong>分布式Session会话</strong>、<strong>微服务网关鉴权</strong> 等一系列权限相关问题。</p><h5 id="SpringBoot集成sa-token"><a href="#SpringBoot集成sa-token" class="headerlink" title="SpringBoot集成sa-token"></a>SpringBoot集成sa-token</h5><p>添加依赖：</p><pre><code class="highlight xml"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>cn.dev33<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>sa-token-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.39.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></code></pre><p>注：如果你使用的是 SpringBoot 3.x，只需要将 <code>sa-token-spring-boot-starter</code> 修改为 <code>sa-token-spring-boot3-starter</code> 即可。</p><p>application.yml配置：</p><pre><code class="highlight yaml"><span class="attr">sa-token:</span> 
+    <span class="comment"># token 名称（同时也是 cookie 名称）</span>
+    <span class="attr">token-name:</span> <span class="string">satoken</span>
+    <span class="comment"># token 有效期（单位：秒） 默认30天，-1 代表永久有效</span>
+    <span class="attr">timeout:</span> <span class="number">2592000</span>
+    <span class="comment"># token 最低活跃频率（单位：秒），如果 token 超过此时间没有访问系统就会被冻结，默认-1 代表不限制，永不冻结</span>
+    <span class="attr">active-timeout:</span> <span class="number">-1</span>
+    <span class="comment"># 是否允许同一账号多地同时登录 （为 true 时允许一起登录, 为 false 时新登录挤掉旧登录）</span>
+    <span class="attr">is-concurrent:</span> <span class="literal">true</span>
+    <span class="comment"># 在多人登录同一账号时，是否共用一个 token （为 true 时所有登录共用一个 token, 为 false 时每次登录新建一个 token）</span>
+    <span class="attr">is-share:</span> <span class="literal">true</span>
+    <span class="comment"># token 风格（默认可取值：uuid、simple-uuid、random-32、random-64、random-128、tik）</span>
+    <span class="attr">token-style:</span> <span class="string">uuid</span>
+    <span class="comment"># 是否输出操作日志 </span>
+    <span class="attr">is-log:</span> <span class="literal">true</span></code></pre><p>创建DemoControler.java</p><pre><code class="highlight java"><span class="meta">@RestController</span>
+<span class="meta">@RequestMapping(&quot;/user&quot;)</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span>&#123;
+
+	<span class="meta">@RequestMapping(&quot;doLogin&quot;)</span>
+	<span class="function"><span class="keyword">public</span> String <span class="title">doLogin</span><span class="params">(String username, String password)</span> </span>&#123;
+		<span class="comment">// 此处仅作模拟示例，真实项目需要从数据库中查询数据进行比对</span>
+		<span class="keyword">if</span> (<span class="string">&quot;zhang&quot;</span>.equals(username) &amp;&amp; <span class="string">&quot;123456&quot;</span>.equals(password)) &#123;
+			StpUtil.login(<span class="number">10001</span>);  <span class="comment">// 用户Id</span>
+
+			<span class="comment">// 登录成功返回前端token信息</span>
+			SaTokenInfo tokenInfo = StpUtil.getTokenInfo();
+			System.out.println(<span class="string">&quot;token名称：&quot;</span> + tokenInfo.getTokenName());
+			System.out.println(<span class="string">&quot;token值：&quot;</span> + tokenInfo.getTokenValue());
+			<span class="keyword">return</span> <span class="string">&quot;登录成功&quot;</span>;
+		&#125;
+		<span class="keyword">return</span> <span class="string">&quot;登录失败&quot;</span>;
+	&#125;
+
+	<span class="meta">@RequestMapping(&quot;isLogin&quot;)</span>
+	<span class="function"><span class="keyword">public</span> String <span class="title">isLogin</span><span class="params">()</span> </span>&#123;
+		<span class="keyword">return</span> <span class="string">&quot;当前会话是否登录：&quot;</span> + StpUtil.isLogin();
+	&#125;
+	<span class="comment">// 测试添加权限</span>
+	<span class="meta">@SaCheckPermission(&quot;user:add&quot;)</span>
+	<span class="meta">@RequestMapping(&quot;add&quot;)</span>
+	<span class="function"><span class="keyword">public</span> String <span class="title">add</span><span class="params">()</span></span>&#123;
+		<span class="keyword">return</span> <span class="string">&quot;用户添加&quot;</span>;
+	&#125;
+
+    <span class="comment">// 测试删除权限</span>
+	<span class="meta">@SaCheckPermission(&quot;user:delete&quot;)</span>
+	<span class="meta">@RequestMapping(&quot;delete&quot;)</span>
+	<span class="function"><span class="keyword">public</span> String <span class="title">delete</span><span class="params">()</span></span>&#123;
+		System.out.println(<span class="string">&quot;用户删除&quot;</span>);
+		<span class="keyword">return</span> <span class="string">&quot;用户删除&quot;</span>;
+	&#125;
+&#125;
+</code></pre><p>测试：</p><p>登录：</p><p><a target="_blank" rel="noopener" href="http://127.0.0.1:8080/user/doLogin?username=zhang&amp;password=123456">http://127.0.0.1:8080/user/doLogin?username=zhang&amp;password=123456</a></p><p>验证登录：</p><p><a target="_blank" rel="noopener" href="http://127.0.0.1:8080/user/isLogin">http://127.0.0.1:8080/user/isLogin</a></p><p>验证用户添加和删除的权限，需要增加拦截器配置：</p><p>注意：如果没有下面的配置，权限不起作用</p><p>SptInterfaceImpl.java</p><pre><code class="highlight java"><span class="comment">// 实现角色权限认证</span>
+<span class="meta">@Component</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SptInterfaceImpl</span> <span class="keyword">implements</span> <span class="title">StpInterface</span> </span>&#123;
+
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">getPermissionList</span><span class="params">(Object loginId, String loginType)</span> </span>&#123;
+        List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;String&gt;();    
+        list.add(<span class="string">&quot;user:add&quot;</span>);
+        list.add(<span class="string">&quot;user:update&quot;</span>);
+        list.add(<span class="string">&quot;user:get&quot;</span>);
+        <span class="comment">// list.add(&quot;user:delete&quot;);</span>
+        list.add(<span class="string">&quot;art.*&quot;</span>);
+        <span class="keyword">return</span> list;
+    &#125;
+
+    <span class="comment">// 该账号拥有的角色标识集合</span>
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">getRoleList</span><span class="params">(Object loginId, String loginType)</span> </span>&#123;
+        List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;String&gt;();    
+        list.add(<span class="string">&quot;admin&quot;</span>);
+        list.add(<span class="string">&quot;super-admin&quot;</span>);
+        <span class="keyword">return</span> list;
+    &#125;
+
+&#125;
+</code></pre><p>SatokenConfig.java</p><pre><code class="highlight java"><span class="meta">@Configuration</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SatokenConfig</span> <span class="keyword">implements</span> <span class="title">WebMvcConfigurer</span></span>&#123;
+    
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addInterceptors</span><span class="params">(InterceptorRegistry registry)</span> </span>&#123;
+        registry.addInterceptor(<span class="keyword">new</span> SaInterceptor()).addPathPatterns(<span class="string">&quot;/**&quot;</span>);
+    &#125;
+&#125;</code></pre><p>验证接口权限：</p><p><a target="_blank" rel="noopener" href="http://127.0.0.1:8080/user/add">http://127.0.0.1:8080/user/add</a></p><p>添加接口可以访问</p><p><a target="_blank" rel="noopener" href="http://127.0.0.1:8080/user/delete">http://127.0.0.1:8080/user/delete</a></p><p>删除接口没有权限，因为<code>// list.add("user:delete");</code>注释了，放开再次测试，有接口访问权限。</p></div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">Mr Xue</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="">http://xbget.cn/satoken/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，转载请注明出处 <a href="http://xbget.cn">Mr Xue的博客</a>！</span></div></blockquote></div></article><div class="p-info box"></div><aside id="toc"><div class="toc-title">目录</div><nav><ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#SpringBoot%E9%9B%86%E6%88%90sa-token"><span class="toc-number">1.</span> <span class="toc-text">SpringBoot集成sa-token</span></a></li></ol></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="next" href="../secret/">关于网站运维那些事 &gt;</a></div></section><footer><p>Copyright © 2016 - 2024 <a href="../." rel="nofollow">技术分享</a> | <strong><cc></cc></strong><br>Powered by Mr xue.</p></footer></div></div></div><script type="text/javascript" src="../js/search.js"></script><script type="text/javascript" src="../js/top.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script type="text/javascript" src="../js/fancybox.js?v=0.0.1" async></script></body></html>
